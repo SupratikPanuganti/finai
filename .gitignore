@@ -45,3 +45,17 @@ __pycache__/
 node_modules/
 *.pyc
 *.env
+
+# Local env files
+.env
+.env.local
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Node modules
+node_modules/
+
+# Serverless output
+.serverless/

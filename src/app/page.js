@@ -10,7 +10,10 @@ export default function Page() {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/companies?name=${encodeURIComponent(inputValue)}`);
+        const API = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(
+          `${API}/companies?name=${encodeURIComponent(inputValue)}`
+        );
         const data = await response.json();
         console.log("Fetched companies:", data);
 

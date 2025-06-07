@@ -13,7 +13,10 @@ export default function CompanyPage() {
 
   useEffect(() => {
     if (companyName) {
-      fetch(`http://127.0.0.1:8000/companies?name=${encodeURIComponent(companyName)}`)
+      const API = process.env.NEXT_PUBLIC_API_URL;
+      fetch(
+        `${API}/companies?name=${encodeURIComponent(companyName)}`
+      )
         .then((response) => response.json())
         .then((data) => {
           if (data.error) {

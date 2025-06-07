@@ -1,0 +1,30 @@
+service: finai-api
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-2
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-python-requirements
+
+functions:
+  app:
+    handler: handler.handler
+    layers:
+      - { Ref: PythonRequirementsLambdaLayer }
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    zip: true
+    layer: true

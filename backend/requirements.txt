@@ -1,0 +1,8 @@
+fastapi
+mangum
+uvicorn
+sqlalchemy[asyncio]
+asyncpg
+python-dotenv
+boto3
+openai
